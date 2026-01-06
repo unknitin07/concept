@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>55CLUB - Premium Gaming Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            height: 50px;
+        }
+
+        .logo-icon img {
+            height: 100%;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 28px;
+            font-weight: 800;
+            color: #ff4757;
+            letter-spacing: 1px;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-login {
+            background: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+        }
+
+        .btn-login:hover {
+            background: #fff;
+            color: #1a1a2e;
+        }
+
+        .btn-register {
+            background: linear-gradient(135deg, #ff4757 0%, #ff6348 100%);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+        }
+
+        .btn-register:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 71, 87, 0.6);
+        }
+
+        /* Alert Banner */
+        .alert-banner {
+            background: linear-gradient(135deg, #ffd93d 0%, #ffaa00 100%);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 4px 15px rgba(255, 217, 61, 0.3);
+        }
+
+        .alert-icon {
+            font-size: 24px;
+        }
+
+        .alert-text {
+            color: #1a1a2e;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 60px 0;
+            min-height: calc(100vh - 200px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-banner {
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.95) 0%, rgba(31, 31, 58, 0.95) 100%);
+            border-radius: 30px;
+            padding: 80px 60px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 48px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #ff4757 0%, #ff6348 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 50px;
+            line-height: 1.6;
+        }
+
+        .hero-decoration {
+            display: none;
+        }
+
+        .deco-1 { display: none; }
+        .deco-2 { display: none; }
+
+        /* Games Section */
+        .games-section {
+            padding: 60px 0;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .section-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ff4757 0%, #ff6348 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 800;
+            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+        }
+
+        .section-info h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .section-info p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .game-card {
+            background: linear-gradient(135deg, #2a2a4a 0%, #1f1f3a 100%);
+            border-radius: 20px;
+            padding: 0;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 20px;
+        }
+
+        .game-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff4757, #ff6348, #ffd93d);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(255, 71, 87, 0.3);
+            border-color: rgba(255, 71, 87, 0.5);
+        }
+
+        .game-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .game-icon {
+            display: none;
+        }
+
+        .game-title {
+            display: none;
+        }
+
+        .game-subtitle {
+            display: none;
+        }
+
+        /* Lottery Games */
+        .lottery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .lottery-card {
+            border-radius: 16px;
+            padding: 0;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            background: transparent;
+        }
+
+        .lottery-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 16px;
+        }
+
+        .lottery-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .lottery-icon {
+            display: none;
+        }
+
+        .lottery-title {
+            display: none;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            display: none;
+        }
+
+        .cta-grid {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            padding: 16px 40px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-btn-register {
+            background: linear-gradient(135deg, #ff4757 0%, #ff6348 100%);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+        }
+
+        .cta-btn-register:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 71, 87, 0.6);
+        }
+
+        .cta-btn-login {
+            background: transparent;
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .cta-btn-login:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #fff;
+        }
+
+        .cta-btn-telegram {
+            background: linear-gradient(135deg, #0088cc 0%, #00aaff 100%);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(0, 136, 204, 0.4);
+        }
+
+        .cta-btn-telegram:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 136, 204, 0.6);
+        }
+
+        .cta-box {
+            display: none;
+        }
+
+        .cta-title {
+            display: none;
+        }
+
+        .cta-text {
+            display: none;
+        }
+
+        .cta-button {
+            display: none;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+        }
+
+        .footer-link {
+            color: #ff4757;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: #ff6348;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 30px 0;
+                min-height: calc(100vh - 160px);
+            }
+
+            .hero-banner {
+                padding: 50px 30px;
+            }
+
+            .hero-title {
+                font-size: 32px;
+            }
+
+            .hero-subtitle {
+                font-size: 14px;
+                margin-bottom: 35px;
+            }
+
+            .cta-grid {
+                flex-direction: column;
+                gap: 12px;
+                width: 100%;
+            }
+
+            .cta-btn {
+                width: 100%;
+                padding: 14px 30px;
+                font-size: 14px;
+            }
+
+            .games-grid, .lottery-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .game-card, .lottery-card {
+                max-height: 180px;
+            }
+
+            .game-card img, .lottery-card img {
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .auth-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 12px;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <img src="https://55club.app/assets/png/logo-fa11faa6.png" alt="55CLUB">
+                    </div>
+                    <div class="logo-text">55CLUB</div>
+                </div>
+                <div class="auth-buttons">
+                    <a href="#" class="btn btn-login">Log in</a>
+                    <a href="https://55club.app/#/register?invitationCode=865778641542" class="btn btn-register">Register</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="alert-banner">
+            <span class="alert-icon">📢</span>
+            <p class="alert-text">All players registered on this platform must bind their bank data. If a non-personal bank account is bound, please withdraw all your balance and re-register</p>
+        </div>
+
+        <section class="hero">
+            <div class="hero-banner">
+                <div class="hero-content">
+                    <h1 class="hero-title">Welcome to 55CLUB</h1>
+                    <p class="hero-subtitle">Experience premium gaming with exciting lottery games, sports betting, and exclusive rewards. Join thousands of players and start winning today!</p>
+                    <div class="cta-grid">
+                        <a href="https://55club.app/#/register?invitationCode=865778641542" class="cta-btn cta-btn-register">Register Now</a>
+                        <a href="#" class="cta-btn cta-btn-login">Login</a>
+                        <a href="https://t.me/+z6eo5uiBllZiODM1" class="cta-btn cta-btn-telegram">Join Telegram</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="games-section">
+            <div class="games-grid">
+                <div class="game-card">
+                    <img src="https://ossimg.55club-55club.com/55club/lotterycategory/lotterycategory_20250213095756garv.png" alt="WIN GO">
+                </div>
+                <div class="game-card">
+                    <img src="https://ossimg.55club-55club.com/55club/lotterycategory/lotterycategory_20250213095805h23c.png" alt="AVIATOR">
+                </div>
+                <div class="game-card">
+                    <img src="https://ossimg.55club-55club.com/55club/lotterycategory/lotterycategory_2025021309581453ip.png" alt="CRICKET">
+                </div>
+            </div>
+        </section>
+
+        <section class="games-section">
+            <div class="section-header">
+                <div class="section-icon">8</div>
+                <div class="section-info">
+                    <h2>Lottery</h2>
+                    <p>The games are independently developed by our team, fun, fair, and safe</p>
+                </div>
+            </div>
+            <div class="lottery-grid">
+                <div class="lottery-card">
+                    <img src="https://ossimg.55club-55club.com/55club/lotterycategory/lotterycategory_20250213095756garv.png" alt="Win GO">
+                </div>
+                <div class="lottery-card">
+                    <img src="https://ossimg.55club-55club.com/55club/lotterycategory/lotterycategory_20250213095805h23c.png" alt="K3">
+                </div>
+                <div class="lottery-card">
+                    <img src="https://ossimg.55club-55club.com/55club/lotterycategory/lotterycategory_2025021309581453ip.png" alt="5D">
+                </div>
+                <div class="lottery-card">
+                    <img src="https://ossimg.55club-55club.com/55club/lotterycategory/lotterycategory_20250425042914ibbt.png" alt="Moto Racing">
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 55CLUB. All rights reserved. | <a href="https://t.me/+z6eo5uiBllZiODM1" class="footer-link">Join our Telegram</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
